@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Number Guessing Game</title>
+  </head>
+  <body>
+    <h1>Random Number Guessing Game</h1>
+    <p>Try to guess the randomly selected number between 1 and 10.</p>
+    <p>Enter your guess:</p>
+    <input type="text" id="guessInput" />
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="result"></p>
+
+    <script>
+      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+      const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+
+      function checkGuess() {
+        const guess = parseInt(document.getElementById("guessInput").value);
+        const resultElement = document.getElementById("result");
+
+        if (isNaN(guess)) {
+          resultElement.textContent = "Please enter a valid number.";
+        } else {
+          if (guess === randomNumber) {
+            resultElement.textContent =
+              "Congratulations! You guessed the correct number.";
+          } else {
+            resultElement.textContent = `Sorry, the correct number was ${randomNumber}. Try again!`;
+          }
+        }
+      }
+
+      console.log(numbers[Math.floor(Math.random() * numbers.length)]);
+    </script>
+  </body>
+</html>
